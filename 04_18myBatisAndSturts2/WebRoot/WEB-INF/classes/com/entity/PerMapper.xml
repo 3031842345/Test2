@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcl.dao.PerDao">
+	 <select id="perShow" resultType="com.entity.Per">
+     SELECT * FROM person limit #{startPage},#{endPage}
+   </select>
+   <select id="pageCount" resultType="int">
+     SELECT COUNT('x') FROM person
+   </select>
+   <update id="updatePer" parameterType="com.entity.Per">
+      Update person set name=#{name},sex=#{sex},profession=#{proFession} where id=#{id}
+   </update>
+   
+   <insert id="insertPer">
+   insert into person(name,sex,profession)
+    values(#{name},#{sex},#{proFession})
+   </insert>
+   
+   <delete id="delPer" parameterType="Integer">
+      Delete from person where id=#{id}
+   </delete>
+	
+</mapper>
